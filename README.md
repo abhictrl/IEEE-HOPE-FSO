@@ -33,8 +33,20 @@ Project Lux is a free-space optical (FSO) communication system that transmits a 
 ## 📂 Repository Structure
 
 This repository is organized to keep our hardware designs, firmware code, and documentation separate and clean.
-/ ├── hardware/ │ ├── Receiver board/ # KiCad project files for the receiver │ └── Transmitter board/ # KiCad project files for the transmitter ├── firmware/ │ └── ... # Arduino C++ source code (coming soon) ├── media/ │ └── ... # Schematics, 3D renders, and demo videos ├── docs/ │ └── ... # Datasheets, presentations, etc. ├── .gitignore └── README.md
-
+```
+/
+├── hardware/
+│   ├── Receiver board/     # KiCad project files for the receiver
+│   └── Transmitter board/  # KiCad project files for the transmitter
+├── firmware/
+│   └── ...                 # Arduino C++ source code (coming soon)
+├── media/
+│   └── ...                 # Schematics, 3D renders, and demo videos
+├── docs/
+│   └── ...                 # Datasheets, presentations, etc.
+├── .gitignore
+└── README.md
+```
 ## 📖 Project Status
 
 This project is **currently in progress**.
@@ -48,9 +60,9 @@ This project is **currently in progress**.
 
 ## 👥 Team
 
-* [Abhishek Rana] - Project Lead, Hardware Design, Firmware Development
-* [Aayush Dahal] - Hardware Design, Firmware Development
-* [Diego McCullough] - Hardware Design, Firmware Development
+* Abhishek Rana - Project Lead, Hardware Design, Firmware Development
+* Aayush Dahal - Hardware Design, Firmware Development
+* Diego McCullough - Hardware Design, Firmware Development
 
 ## 📜 Reference & Inspiration
 
