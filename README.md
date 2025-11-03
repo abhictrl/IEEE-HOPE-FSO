@@ -41,7 +41,8 @@ This repository is organized to keep our hardware designs, firmware code, and do
 ├── firmware/
 │   └── ...                 # Arduino C++ source code (coming soon)
 ├── media/
-│   └── ...                 # Schematics, 3D renders, and demo videos
+│   └── pictures
+|         └─...                 # Schematics, 3D renders, and demo videos
 ├── docs/
 │   └── ...                 # Datasheets, presentations, etc.
 ├── .gitignore
