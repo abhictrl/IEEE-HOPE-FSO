@@ -4,7 +4,7 @@
 
 A self-aligning, laser-based audio communication system built for the Howard University **IEEE H.O.P.E. (Hands-On PCB Engineering)** competition (Fall 2025).
 
-
+![Project Lux Receiver Board 3D View](./media/Pictures/3D View Receiver Board.png)
 
 ## 🎯 Project Overview
 
