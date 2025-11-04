@@ -88,6 +88,8 @@
 	(net 8 "unconnected-(U1-ROUT+-Pad16)")
 	(net 9 "unconnected-(U1-ROUT--Pad14)")
 	(net 10 "unconnected-(U1-NC-Pad9)")
+	(net 11 "unconnected-(U1-~{SHDN}-Pad12)")
+	(net 12 "unconnected-(U1-~{MUTE}-Pad5)")
 	(footprint "Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm"
 		(layer "F.Cu")
 		(uuid "32a5abe2-4b10-4d5a-9cdf-46f2fc74906a")
@@ -528,9 +530,9 @@
 			(size 1.95 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 5 "+5V")
+			(net 12 "unconnected-(U1-~{MUTE}-Pad5)")
 			(pinfunction "~{MUTE}")
-			(pintype "input")
+			(pintype "input+no_connect")
 			(uuid "dfe3de33-6d9e-42fa-ba47-3d6f2d3389e6")
 		)
 		(pad "6" smd roundrect
@@ -598,9 +600,9 @@
 			(size 1.95 0.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net 5 "+5V")
+			(net 11 "unconnected-(U1-~{SHDN}-Pad12)")
 			(pinfunction "~{SHDN}")
-			(pintype "input")
+			(pintype "input+no_connect")
 			(uuid "99daff1b-a774-4617-84a7-51c4905392f6")
 		)
 		(pad "13" smd roundrect
