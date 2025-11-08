@@ -64,7 +64,6 @@ This project is **currently in progress**.
 * Abhishek Rana - Hardware Design, Firmware Development
 * Aayush Dahal - Hardware Design, Firmware Development
 * Diego McCullough - Hardware Design, Firmware Development
-* Moyinoluwa Ogunjobi
 
 ## 📜 Reference & Inspiration
 
