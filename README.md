@@ -87,9 +87,9 @@ This project is **currently in progress**.
 
 ## 👥 Team
 
-* Abhishek Rana - Hardware Design (Receiver Board), Firmware Development
-* Aayush Dahal - Hardware Design (Transmitter Board), Firmware Development
-* Diego McCullough - Hardware Design (Power Board), Firmware Development
+* Abhishek Rana - Hardware Design (Receiver Board, Transmitter Board)
+* Aayush Dahal - Hardware Design (Transmitter Board)
+* Diego McCullough - Hardware Design (Power Board)
 
 ## 📜 Reference & Inspiration
 
