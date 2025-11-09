@@ -1,20 +1,46 @@
-# Project Lux: A Self-Aligning FSO Audio Link
+# Project Lux: A Free-Space-Optical Audio Link
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A self-aligning, laser-based audio communication system built for the Howard University **IEEE H.O.P.E. (Hands-On PCB Engineering)** competition (Fall 2025).
+A self-aligning, laser-based audio communication system built for the Howard University **IEEE H.O.P.E. (Hands-On PCB Engineering)** Project (Fall 2025).
 
 ![Project Lux Receiver Board 3D View](./media/Pictures/3D-View-Receiver-Board.png)
 
 ## 🎯 Project Overview
 
-Project Lux is a free-space optical (FSO) communication system that transmits a high-fidelity audio signal over a laser beam. The key feature of this project is a closed-loop, self-aligning system that autonomously scans for, locks onto, and tracks a receiver. This creates a robust and user-friendly wireless audio link that is not susceptible to a broken link from minor movements.
+Project Lux is a free-space optical (FSO) communication system that transmits a high-fidelity audio signal over a laser beam.
+
+This project demonstrates the core principles of optical communication. The system consists of two main components:
+1.  **The Transmitter:** Modulates an audio signal from a source (like a phone or laptop) onto a laser beam.
+2.  **The Receiver:** Intercepts the laser beam, converts the light back into an electrical signal, and amplifies it to drive a speaker.
+
+This creates a simple, point-to-point wireless audio link.
 
 ### Key Features
-* **Self-Aligning:** A dual-axis, servo-driven pan-tilt mechanism automatically aims the transmitter.
 * **Audio Modulation:** An analog circuit modulates a 3.5mm audio input signal onto a laser diode.
-* **Smart Receiver:** A quadrant photodiode array provides real-time positional feedback while simultaneously demodulating the audio signal.
-* **Custom PCB:** All transmitter and receiver electronics are designed on custom PCBs using **KiCad**.
+* **Optical Detection:** A photodiode array (`BPW34`) detects the modulated laser beam and converts it back into an electrical signal.
+* **Custom PCB:** All transmitter and receiver electronics are designed on custom PCBs using KiCad.
+
+
+## 📡 Receiver Board Design
+
+The receiver board is the "ear" of the system, designed to convert the incoming light signal back into audible sound. The signal path is a three-stage amplification process.
+
+### 1. Stage 1: TIA (Current-to-Voltage)
+* **Detection:** An array of `BPW34` photodiodes captures the modulated laser light, generating a tiny electrical current proportional to the light's brightness.
+* **Conversion:** The first op-amp (`LM358`) is configured as a **Transimpedance Amplifier (TIA)**. It converts this weak input *current* into a usable *voltage* signal.
+
+### 2. Stage 2: Voltage Pre-Amplification
+* **Gain:** The voltage from the TIA is fed into the second op-amp (`LM358`), which is configured as a **non-inverting amplifier**. This stage boosts the line-level signal to make it stronger and more robust against noise.
+
+### 3. Stage 3: Power Amplification
+* **Coupling:** A `1uF` capacitor (`C2`) blocks any DC offset before sending the clean AC audio signal to the final stage.
+* **Power Amp:** A `PAM8403D` Class-D audio amplifier takes the line-level signal and provides the necessary power to drive a standard `LS1` speaker.
+
+### Key Components
+* **Photodiodes:** `BPW34` (x3)
+* **Op-Amp (TIA & Pre-Amp):** `LM358`
+* **Power Amplifier:** `PAM8403D`
 
 ## ⚙️ Tech Stack & Components
 
