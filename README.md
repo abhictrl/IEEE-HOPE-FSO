@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-A self-aligning, laser-based audio communication system built for the Howard University **IEEE H.O.P.E. (Hands-On PCB Engineering)** Project (Fall 2025).
+A laser-based audio communication system built for the Howard University **IEEE H.O.P.E. (Hands-On PCB Engineering)** Project (Fall 2025).
 
 ![Project Lux Receiver Board 3D View](./media/Pictures/3D-View-Receiver-Board.png)
 
@@ -21,39 +21,55 @@ This creates a simple, point-to-point wireless audio link.
 * **Optical Detection:** A photodiode array (`BPW34`) detects the modulated laser beam and converts it back into an electrical signal.
 * **Custom PCB:** All transmitter and receiver electronics are designed on custom PCBs using KiCad.
 
+## 🛰️ Transmitter Board Design
+
+The transmitter board is the "voice" of the system. Its job is to take a standard audio signal and convert it into a light-based signal by modulating the brightness of a laser.
+
+### 1. Stage 1: Audio Input & Biasing
+* **The Problem:** A standard audio (sine) wave is AC, meaning it has a positive and a negative "half." Our single-supply (+5V) circuit can't process negative voltages.
+* **The Solution:** A **voltage divider** (`R1`, `R2`) creates a 2.5V "virtual ground." An **AC-coupling capacitor** (`C1`) lets the audio signal "ride" on top of this 2.5V bias, shifting the entire wave into the positive (1.5V to 3.5V) range.
+
+### 2. Stage 2: Voltage-to-Current Conversion (Transconductance)
+* **Modulation:** This is the core of the transmitter. It takes the *voltage* signal and converts it into a proportional *current* to drive the laser. This is a **transconductance** stage.
+* **The Circuit:** An op-amp (`U1A`) buffers the signal, which then drives a transistor (`Q1`). The transistor acts as a "valve," controlling the current flowing through the laser.
+* **Idle Current:** A variable resistor (`R6_Variable`) is used to set the "quiescent" or "idle" current. This keeps the laser on at "half-brightness" when no audio is playing, allowing the signal to modulate both brighter and dimmer.
+
+### 3. Stage 3: Laser Driver
+* **Output:** The modulated current from `Q1` drives the laser diode (`LD1`), causing its brightness to flicker in perfect sync with the audio waveform.
 
 ## 📡 Receiver Board Design
 
-The receiver board is the "ear" of the system, designed to convert the incoming light signal back into audible sound. The signal path is a three-stage amplification process.
+The receiver board is the "ear" of the system, designed to convert the incoming light signal back into audible sound. The signal path is a three-stage process.
 
 ### 1. Stage 1: TIA (Current-to-Voltage)
 * **Detection:** An array of `BPW34` photodiodes captures the modulated laser light, generating a tiny electrical current proportional to the light's brightness.
-* **Conversion:** The first op-amp (`LM358`) is configured as a **Transimpedance Amplifier (TIA)**. It converts this weak input *current* into a usable *voltage* signal.
+* **Conversion:** The first op-amp (`U2A`) is configured as a **Transimpedance Amplifier (TIA)**. It converts this weak input *current* into a usable *voltage* signal.
 
 ### 2. Stage 2: Voltage Pre-Amplification
-* **Gain:** The voltage from the TIA is fed into the second op-amp (`LM358`), which is configured as a **non-inverting amplifier**. This stage boosts the line-level signal to make it stronger and more robust against noise.
+* **Gain:** The voltage from the TIA is fed into the second op-amp (`U2B`), which is configured as an **inverting gain stage** to boost the signal.
 
 ### 3. Stage 3: Power Amplification
-* **Coupling:** A `1uF` capacitor (`C2`) blocks any DC offset before sending the clean AC audio signal to the final stage.
-* **Power Amp:** A `PAM8403D` Class-D audio amplifier takes the line-level signal and provides the necessary power to drive a standard `LS1` speaker.
+* **Coupling:** A `1uF` capacitor (`C2`) blocks the DC component of the signal, passing only the clean AC audio to the final stage.
+* **Power Amp:** A `PAM8403D` Class-D audio amplifier takes the line-level signal and provides the necessary power to drive a standard `4S1` speaker.
 
 ### Key Components
 * **Photodiodes:** `BPW34` (x3)
 * **Op-Amp (TIA & Pre-Amp):** `LM358`
 * **Power Amplifier:** `PAM8403D`
 
+> **Want more detail?**
+>
+> Check out the **[Full Circuit Walkthrough](./docs/Circuit-Walkthrough.md)** for a component-by-component explanation of the schematics.
+
 ## ⚙️ Tech Stack & Components
 
 ### Hardware
-* **Microcontroller:** Arduino Nano
-* **Audio:** 3.5mm Audio Jacks, PAM8403D Audio Amplifier
-* **Actuation:** 2x SG90 Servo Motors
-* **Sensors:** Quadrant Photodiode Array
-* **Circuits:** Op-Amps (e.g., LM358) for modulation/demodulation
+* **Audio:** 3.5mm Audio Jacks, PAM8403D Audio Amplifier, Laser Diode
+* **Sensors:** BPW34 Photodiodes
+* **Circuits:** Op-Amps (LM358), Transistors (2N3904), Passive Components
 
 ### Software & Design
-* **Firmware:** C++ (Arduino)
-* **PCB Design:** KiCad (or Cadence)
+* **PCB Design:** KiCad
 * **Version Control:** Git & GitHub
 
 ## 📂 Repository Structure
@@ -70,7 +86,7 @@ This repository is organized to keep our hardware designs, firmware code, and do
 │   └── pictures
 |         └─...                 # Schematics, 3D renders, and demo videos
 ├── docs/
-│   └── ...                 # Datasheets, presentations, etc.
+│   └── Walkthrough.md               # Datasheets, presentations, etc.
 ├── .gitignore
 └── README.md
 ```
@@ -82,8 +98,7 @@ This project is **currently in progress**.
 * [x] Phase 2: Initial Circuit Design & Component Sourcing
 * [x] Phase 3: Receiver PCB Layout
 * [x] Phase 4: Transmitter PCB Layout
-* [ ] Phase 5: Firmware Development (Scanning & Tracking)
-* [ ] Phase 6: Final Integration & Testing
+* [ ] Phase 5: Final Integration & Testing
 
 ## 👥 Team
 
