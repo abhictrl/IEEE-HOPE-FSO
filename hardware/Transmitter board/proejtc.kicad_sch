@@ -1676,16 +1676,16 @@
 		(uuid "2bf0e0db-808e-451c-a282-65d3c6316f18")
 	)
 	(junction
+		(at 156.21 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "43b5d4d8-695c-4459-bd7c-1f4331ac747b")
+	)
+	(junction
 		(at 156.21 120.65)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4421d76d-bb26-4e6a-bce8-ae9aa08c11a3")
-	)
-	(junction
-		(at 156.21 52.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "71ce1747-52d9-4707-b9bb-1b39bf3e9690")
 	)
 	(junction
 		(at 118.11 85.09)
@@ -1851,13 +1851,13 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 52.07) (xy 156.21 62.23)
+			(xy 156.21 52.07) (xy 175.26 52.07)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "50eb2163-39e1-461d-baa4-f55ff831c33c")
+		(uuid "5000174e-adac-4d1f-8a60-ddb89c69578f")
 	)
 	(wire
 		(pts
@@ -1888,16 +1888,6 @@
 			(type default)
 		)
 		(uuid "5b9b437c-855a-40fc-8dfa-9e723a8194a0")
-	)
-	(wire
-		(pts
-			(xy 156.21 52.07) (xy 175.26 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "642bebc9-2c71-47d5-9562-52af435d47bc")
 	)
 	(wire
 		(pts
@@ -1971,7 +1961,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 52.07) (xy 107.95 52.07)
+			(xy 107.95 52.07) (xy 156.21 52.07)
 		)
 		(stroke
 			(width 0)
@@ -1997,7 +1987,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ad55a38b-b1ab-4629-ba81-4dfb07af7a76")
+		(uuid "be1c40da-1058-48b7-b6d3-8499488857e2")
 	)
 	(wire
 		(pts
@@ -2068,6 +2058,16 @@
 			(type default)
 		)
 		(uuid "ea9d63cb-0b55-45f6-ba26-471efc7b022f")
+	)
+	(wire
+		(pts
+			(xy 156.21 52.07) (xy 156.21 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ebeaec98-f5ed-47b6-bcca-ada595f92153")
 	)
 	(wire
 		(pts
@@ -3196,34 +3196,34 @@
 	)
 	(symbol
 		(lib_id "Diode_Laser:PL520")
-		(at 156.21 69.85 270)
+		(at 156.21 67.31 270)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "de63717b-4686-43dd-9062-6646a09d02b4")
 		(property "Reference" "LD1"
-			(at 160.02 67.3099 90)
+			(at 153.67 67.3099 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "D6505I"
-			(at 160.02 69.8499 90)
+			(at 153.67 69.8499 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "OptoDevice:LaserDiode_TO38ICut-3"
-			(at 151.765 69.85 0)
+			(at 151.765 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3232,7 +3232,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.osram-os.com/Graphics/XPic7/00234693_0.pdf/PL%20520.pdf"
-			(at 151.13 70.612 0)
+			(at 151.13 66.548 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3241,7 +3241,7 @@
 			)
 		)
 		(property "Description" "Green Laser Diode (520nm), TO-38"
-			(at 156.21 69.85 0)
+			(at 156.21 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
